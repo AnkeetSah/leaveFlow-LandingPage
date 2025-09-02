@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { RiUserLine, RiUserStarLine, RiUserSettingsLine, RiUserHeartLine, RiAdminLine, RiShieldKeyholeLine, RiLoginBoxLine, RiMailSendLine, RiFileCopyLine, RiCheckLine } from "react-icons/ri";
+import { RiUserLine, RiUserStarLine, RiUserSettingsLine, RiUserHeartLine, RiAdminLine, RiShieldKeyholeLine, RiLoginBoxLine, RiMailSendLine, RiFileCopyLine, RiCheckLine, RiExternalLinkLine } from "react-icons/ri";
 
 const DemoAccess = () => {
   const [selectedRole, setSelectedRole] = useState("student");
@@ -21,8 +21,7 @@ const DemoAccess = () => {
       email: "student.demo@leaveflow.com",
       password: "demo2024",
       access: "Apply & track leaves",
-      color: "blue",
-      demoLink: "https://demo.leaveflow.com/student-login"
+      color: "blue"
     },
     faculty: {
       icon: <RiUserStarLine className="text-xl" />,
@@ -30,8 +29,7 @@ const DemoAccess = () => {
       email: "faculty.demo@leaveflow.com",
       password: "demo2024",
       access: "Approve student requests",
-      color: "green",
-      demoLink: "https://demo.leaveflow.com/faculty-login"
+      color: "green"
     },
     hod: {
       icon: <RiUserSettingsLine className="text-xl" />,
@@ -39,8 +37,7 @@ const DemoAccess = () => {
       email: "hod.demo@leaveflow.com",
       password: "demo2024",
       access: "Department oversight",
-      color: "purple",
-      demoLink: "https://demo.leaveflow.com/hod-login"
+      color: "purple"
     },
     warden: {
       icon: <RiUserHeartLine className="text-xl" />,
@@ -48,8 +45,7 @@ const DemoAccess = () => {
       email: "warden.demo@leaveflow.com",
       password: "demo2024",
       access: "Hostel management",
-      color: "orange",
-      demoLink: "https://demo.leaveflow.com/warden-login"
+      color: "orange"
     },
     admin: {
       icon: <RiAdminLine className="text-xl" />,
@@ -57,8 +53,7 @@ const DemoAccess = () => {
       email: "admin.demo@leaveflow.com",
       password: "demo2024",
       access: "Full system access",
-      color: "indigo",
-      demoLink: "https://demo.leaveflow.com/admin-login"
+      color: "indigo"
     }
   };
 
@@ -79,13 +74,20 @@ const DemoAccess = () => {
     setTimeout(() => setCopiedItem(null), 2000);
   };
 
+  const copyAllCredentials = () => {
+    const credential = demoCredentials[selectedRole as keyof typeof demoCredentials];
+    const text = `Email: ${credential.email}\nPassword: ${credential.password}`;
+    navigator.clipboard.writeText(text);
+    setCopiedItem('all');
+    setTimeout(() => setCopiedItem(null), 2000);
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
     console.log("Form submitted:", formData);
     alert("Thank you! We'll contact you with custom demo access within 24 hours.");
     setShowCustomForm(false);
@@ -115,7 +117,7 @@ const DemoAccess = () => {
             </span>
           </h2>
           <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            Test drive the complete LeaveFlow system with pre-configured demo accounts. All demo data is isolated and doesn't affect production systems.
+            Test drive the complete LeaveFlow system using the demo credentials below. Copy and paste them on the login page.
           </p>
         </motion.div>
 
@@ -128,8 +130,31 @@ const DemoAccess = () => {
             viewport={{ once: true }}
             className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100"
           >
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">🚀 Instant Demo Access</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">🚀 Demo Access Instructions</h3>
             
+            {/* Step-by-step Guide */}
+            <div className="mb-8 bg-blue-50 rounded-xl p-6 border border-blue-200">
+              <h4 className="font-semibold text-blue-900 mb-4">How to access the demo:</h4>
+              <ol className="space-y-3 text-sm text-blue-800">
+                <li className="flex items-start">
+                  <span className="w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-xs font-bold mr-3 flex-shrink-0">1</span>
+                  <span>Copy the credentials below for your desired role</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-xs font-bold mr-3 flex-shrink-0">2</span>
+                  <span>Click the "Go to Login Page" button</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-xs font-bold mr-3 flex-shrink-0">3</span>
+                  <span>Paste the credentials on the login page</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-xs font-bold mr-3 flex-shrink-0">4</span>
+                  <span>Explore the demo environment (resets every 2 hours)</span>
+                </li>
+              </ol>
+            </div>
+
             {/* Role Selection */}
             <div className="mb-8">
               <label className="block text-sm font-medium text-gray-700 mb-3">Select Role to Test:</label>
@@ -160,7 +185,17 @@ const DemoAccess = () => {
 
             {/* Credentials Display */}
             <div className="mb-6">
-              <h4 className="font-semibold text-gray-900 mb-4">Demo Credentials for {currentCredential.role}</h4>
+              <div className="flex items-center justify-between mb-4">
+                <h4 className="font-semibold text-gray-900">Credentials for {currentCredential.role}</h4>
+                <button
+                  onClick={copyAllCredentials}
+                  className="text-sm text-blue-600 hover:text-blue-700 font-medium flex items-center"
+                >
+                  {copiedItem === 'all' ? <RiCheckLine className="mr-1" /> : <RiFileCopyLine className="mr-1" />}
+                  Copy All
+                </button>
+              </div>
+              
               <div className="space-y-3">
                 <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                   <div>
@@ -170,6 +205,7 @@ const DemoAccess = () => {
                   <button
                     onClick={() => copyToClipboard(currentCredential.email, 'email')}
                     className="p-2 text-gray-400 hover:text-gray-600 transition-colors"
+                    title="Copy email"
                   >
                     {copiedItem === 'email' ? <RiCheckLine className="text-green-500" /> : <RiFileCopyLine />}
                   </button>
@@ -183,6 +219,7 @@ const DemoAccess = () => {
                   <button
                     onClick={() => copyToClipboard(currentCredential.password, 'password')}
                     className="p-2 text-gray-400 hover:text-gray-600 transition-colors"
+                    title="Copy password"
                   >
                     {copiedItem === 'password' ? <RiCheckLine className="text-green-500" /> : <RiFileCopyLine />}
                   </button>
@@ -195,25 +232,29 @@ const DemoAccess = () => {
               </div>
             </div>
 
-            {/* Direct Login Button */}
+            {/* Login Page Button */}
             <motion.a
-              href={currentCredential.demoLink}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/login" // Your actual login page URL
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 px-6 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center mb-4"
             >
-              <RiLoginBoxLine className="mr-2" />
-              Login as {currentCredential.role.split(' ')[1]}
+              <RiExternalLinkLine className="mr-2" />
+              Go to Login Page
             </motion.a>
 
-            <p className="text-center text-sm text-gray-500">
-              Copy credentials above or click to login directly
-            </p>
+            {copiedItem && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-center text-green-600 text-sm mb-4"
+              >
+                ✓ {copiedItem === 'all' ? 'Credentials copied!' : copiedItem === 'email' ? 'Email copied!' : 'Password copied!'}
+              </motion.div>
+            )}
           </motion.div>
 
-          {/* Custom Access Form */}
+          {/* Custom Access Form - Remains the same as before */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -221,6 +262,7 @@ const DemoAccess = () => {
             viewport={{ once: true }}
             className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100"
           >
+            {/* ... (Keep the custom access form exactly as before) ... */}
             <div className="flex items-center mb-6">
               <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-4">
                 <RiMailSendLine className="text-blue-600 text-xl" />
@@ -351,7 +393,7 @@ const DemoAccess = () => {
           </motion.div>
         </div>
 
-        {/* Security Assurance */}
+        {/* Security Assurance - Remains the same */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
