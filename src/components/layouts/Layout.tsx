@@ -1,26 +1,25 @@
-import DemoAccess from "../sections/DemoAccess"
-import ExecutiveSummary from "../sections/ExecutiveSummary"
-import Footer from "../sections/Footer"
-import Header from "../sections/Header"
-import HeroSection from "../sections/HeroSection"
-import RoleDashboards from "../sections/RoleDashboards"
-import TechnologyStack from "../sections/TechnologyStack"
-import WorkflowSection from "../sections/WorkFLowSection"
-
+import DemoAccess from "../sections/DemoAccess";
+import ExecutiveSummary from "../sections/ExecutiveSummary";
+import Footer from "../sections/Footer";
+import Header from "../sections/Header";
+import HeroSection from "../sections/HeroSection";
+import RoleDashboards from "../sections/RoleDashboards";
+import TechnologyStack from "../sections/TechnologyStack";
+import WorkFlowSection from "../sections/WorkFlowSection";
 
 const Layout = () => {
   return (
     <div>
-        <Header/>
-        <HeroSection/>
-        <ExecutiveSummary/>
-        <RoleDashboards/>
-        <WorkflowSection/>
-        <DemoAccess/>
-        <TechnologyStack/>
-        <Footer/>
+      <Header />
+      <HeroSection />
+      <ExecutiveSummary />
+      <RoleDashboards />
+      <WorkFlowSection />
+      <DemoAccess />
+      <TechnologyStack />
+      <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

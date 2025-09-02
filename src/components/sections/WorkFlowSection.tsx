@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { RiSendPlaneLine, RiUserSearchLine, RiUserSettingsLine, RiHomeGearLine, RiCheckboxCircleLine, RiQrCodeLine } from "react-icons/ri";
 
-const WorkflowSection = () => {
+const WorkFlowSection = () => {
   const workflowSteps = [
     {
       icon: <RiSendPlaneLine className="text-2xl" />,
@@ -245,4 +245,4 @@ const WorkflowSection = () => {
   );
 };
 
-export default WorkflowSection;
+export default WorkFlowSection;
