@@ -4,20 +4,21 @@ import Footer from "../sections/Footer";
 import Header from "../sections/Header";
 import HeroSection from "../sections/HeroSection";
 import RoleDashboards from "../sections/RoleDashboards";
+
 import TechnologyStack from "../sections/TechnologyStack";
 import WorkFlowSection from "../sections/WorkFlowSection";
 
 const Layout = () => {
   return (
     <div>
-      <Header />
-      <HeroSection />
-      <ExecutiveSummary />
+       <Header /> 
+  <HeroSection /> 
+     <ExecutiveSummary />
       <RoleDashboards />
       <WorkFlowSection />
       <DemoAccess />
       <TechnologyStack />
-      <Footer />
+      <Footer /> 
     </div>
   );
 };

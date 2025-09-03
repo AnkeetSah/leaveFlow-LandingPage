@@ -1,245 +1,157 @@
 import { motion } from "framer-motion";
-import { RiSendPlaneLine, RiUserSearchLine, RiUserSettingsLine, RiHomeGearLine, RiCheckboxCircleLine, RiQrCodeLine } from "react-icons/ri";
+import {
+  RiSendPlaneLine,
+  RiUserSearchLine,
+  RiUserSettingsLine,
+  RiHomeGearLine,
+  RiCheckboxCircleLine,
+  RiQrCodeLine
+} from "react-icons/ri";
 
 const WorkFlowSection = () => {
   const workflowSteps = [
     {
       icon: <RiSendPlaneLine className="text-2xl" />,
       title: "Submit Request",
-      description: "Users create a leave request with validations and required details through an intuitive form with AI assistance.",
+      description:
+        "Users create a leave request with validations and required details through an intuitive form with AI assistance.",
       color: "blue",
-      features: ["AI form assistant", "Automatic validation", "Required attachments", "Instant confirmation"]
+      features: ["AI form assistant", "Automatic validation", "Required attachments", "Instant confirmation"],
     },
     {
       icon: <RiUserSearchLine className="text-2xl" />,
       title: "Faculty Review",
-      description: "Smart routing to reviewer(s) with SLAs, workload balancing, and optional remarks for context.",
+      description:
+        "Smart routing to reviewer(s) with SLAs, workload balancing, and optional remarks for context.",
       color: "green",
-      features: ["Workload-aware routing", "48-hour SLA", "Remarks system", "Mobile approval"]
+      features: ["Workload-aware routing", "48-hour SLA", "Remarks system", "Mobile approval"],
     },
     {
       icon: <RiUserSettingsLine className="text-2xl" />,
       title: "HOD Approval",
-      description: "Department oversight ensures policy compliance, budget considerations, and handles escalations when needed.",
+      description:
+        "Department oversight ensures policy compliance, budget considerations, and handles escalations when needed.",
       color: "purple",
-      features: ["Policy compliance checks", "Budget monitoring", "Escalation handling", "Department analytics"]
+      features: ["Policy compliance checks", "Budget monitoring", "Escalation handling", "Department analytics"],
     },
     {
       icon: <RiHomeGearLine className="text-2xl" />,
       title: "Warden Clearance",
-      description: "Hostel-level checks, parent notifications, and gate-pass coordination for complete transparency.",
+      description:
+        "Hostel-level checks, parent notifications, and gate-pass coordination for complete transparency.",
       color: "orange",
-      features: ["Hostel rules validation", "Parent notifications", "Gate-pass generation", "Emergency contact sync"]
+      features: ["Hostel rules validation", "Parent notifications", "Gate-pass generation", "Emergency contact sync"],
     },
     {
       icon: <RiCheckboxCircleLine className="text-2xl" />,
       title: "Final Status & Audit",
-      description: "Approved/Rejected with full audit trail, comprehensive notifications, and digital documentation.",
+      description:
+        "Approved/Rejected with full audit trail, comprehensive notifications, and digital documentation.",
       color: "indigo",
-      features: ["Complete audit trail", "Multi-channel notifications", "Digital documentation", "Export capabilities"]
+      features: ["Complete audit trail", "Multi-channel notifications", "Digital documentation", "Export capabilities"],
     },
     {
       icon: <RiQrCodeLine className="text-2xl" />,
       title: "Campus Exit Verification",
-      description: "Security guards scan QR codes to verify approved leaves before allowing students to exit campus.",
+      description:
+        "Security guards scan QR codes to verify approved leaves before allowing students to exit campus.",
       color: "red",
-      features: ["QR code verification", "Real-time validation", "Exit timestamp", "Security alerts"]
-    }
+      features: ["QR code verification", "Real-time validation", "Exit timestamp", "Security alerts"],
+    },
   ];
 
-  const getColorClasses = (color: string) => {
-    switch (color) {
-      case "blue":
-        return {
-          bg: "bg-blue-100",
-          text: "text-blue-600",
-          border: "border-blue-200",
-          gradient: "from-blue-500 to-blue-600"
-        };
-      case "green":
-        return {
-          bg: "bg-green-100",
-          text: "text-green-600",
-          border: "border-green-200",
-          gradient: "from-green-500 to-green-600"
-        };
-      case "purple":
-        return {
-          bg: "bg-purple-100",
-          text: "text-purple-600",
-          border: "border-purple-200",
-          gradient: "from-purple-500 to-purple-600"
-        };
-      case "orange":
-        return {
-          bg: "bg-orange-100",
-          text: "text-orange-600",
-          border: "border-orange-200",
-          gradient: "from-orange-500 to-orange-600"
-        };
-      case "indigo":
-        return {
-          bg: "bg-indigo-100",
-          text: "text-indigo-600",
-          border: "border-indigo-200",
-          gradient: "from-indigo-500 to-indigo-600"
-        };
-      case "red":
-        return {
-          bg: "bg-red-100",
-          text: "text-red-600",
-          border: "border-red-200",
-          gradient: "from-red-500 to-red-600"
-        };
-      default:
-        return {
-          bg: "bg-gray-100",
-          text: "text-gray-600",
-          border: "border-gray-200",
-          gradient: "from-gray-500 to-gray-600"
-        };
-    }
+  const colorClasses: Record<string, any> = {
+    blue: { bg: "bg-blue-100", text: "text-blue-600", dot: "bg-blue-500" },
+    green: { bg: "bg-green-100", text: "text-green-600", dot: "bg-green-500" },
+    purple: { bg: "bg-purple-100", text: "text-purple-600", dot: "bg-purple-500" },
+    orange: { bg: "bg-orange-100", text: "text-orange-600", dot: "bg-orange-500" },
+    indigo: { bg: "bg-indigo-100", text: "text-indigo-600", dot: "bg-indigo-500" },
+    red: { bg: "bg-red-100", text: "text-red-600", dot: "bg-red-500" },
   };
 
   return (
-    <section id="workflow" className="py-20 bg-white">
+    <section id="workflow" className="py-20 bg-gradient-to-br from-gray-50 to-white">
       <div className="container mx-auto px-4 md:px-8 max-w-6xl">
-        {/* Section Header */}
+        
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-2xl mb-6">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-2xl mb-6 shadow-lg">
             <RiSendPlaneLine className="text-blue-600 text-2xl" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Transparent, configurable{" "}
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Transparent, Configurable{" "}
             <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-              workflow
+              Workflow
             </span>
           </h2>
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            From submission to campus exit, every step is tracked and auditable with automated notifications and complete visibility.
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            Every request moves through a structured path — ensuring accountability, speed, and full visibility.
           </p>
         </motion.div>
 
-        {/* Workflow Timeline */}
+        {/* Timeline */}
         <div className="relative">
-          {/* Connecting Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-200 via-green-200 to-red-200 hidden lg:block"></div>
-          
+          {/* Animated gradient line */}
+          <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-300 via-green-300 to-red-300 animate-pulse"></div>
+
           <div className="space-y-12 lg:space-y-24">
             {workflowSteps.map((step, index) => {
-              const color = getColorClasses(step.color);
               const isEven = index % 2 === 0;
-              
+              const color = colorClasses[step.color];
+
               return (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, x: isEven ? -30 : 30 }}
+                  initial={{ opacity: 0, x: isEven ? -40 : 40 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.7, delay: index * 0.1 }}
+                  transition={{ duration: 0.6, delay: index * 0.15 }}
                   viewport={{ once: true }}
-                  className={`relative flex flex-col lg:flex-row items-center ${
-                    isEven ? 'lg:flex-row-reverse' : ''
-                  }`}
+                  className={`relative flex flex-col lg:flex-row items-center ${isEven ? "lg:flex-row-reverse" : ""}`}
                 >
-                  {/* Content */}
-                  <div className={`lg:w-1/2 ${isEven ? 'lg:pl-12' : 'lg:pr-12'} mb-8 lg:mb-0`}>
-                    <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+                  {/* Card */}
+                  <motion.div
+                    whileHover={{ scale: 1.03 }}
+                    className={`lg:w-1/2 ${isEven ? "lg:pl-12" : "lg:pr-12"} mb-8 lg:mb-0`}
+                  >
+                    <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl hover:shadow-2xl border border-gray-100 transition-all duration-300">
                       <div className="flex items-center mb-4">
                         <div className={`w-12 h-12 ${color.bg} rounded-xl flex items-center justify-center mr-4`}>
                           {step.icon}
                         </div>
-                        <h3 className="text-xl font-bold text-gray-900">{step.title}</h3>
+                        <h3 className="text-xl font-semibold text-gray-900">{step.title}</h3>
                       </div>
                       <p className="text-gray-600 mb-4 leading-relaxed">{step.description}</p>
-                      
-                      <div className="space-y-2">
-                        {step.features.map((feature, featureIndex) => (
-                          <div key={featureIndex} className="flex items-center text-sm text-gray-600">
-                            <div className={`w-2 h-2 ${color.bg} rounded-full mr-2`}></div>
-                            {feature}
-                          </div>
+                      <ul className="space-y-2">
+                        {step.features.map((f, i) => (
+                          <li key={i} className="flex items-center text-sm text-gray-600">
+                            <div className={`w-2 h-2 ${color.dot} rounded-full mr-2`}></div>
+                            {f}
+                          </li>
                         ))}
-                      </div>
+                      </ul>
                     </div>
-                  </div>
+                  </motion.div>
 
-                  {/* Timeline Indicator */}
-                  <div className="flex-shrink-0 relative">
-                    <div className={`w-6 h-6 ${color.bg} rounded-full border-4 border-white shadow-lg flex items-center justify-center z-10 relative`}>
+                  {/* Timeline Dot */}
+                  <div className="flex-shrink-0 relative z-10">
+                    <div className={`w-6 h-6 ${color.bg} rounded-full border-4 border-white shadow-md flex items-center justify-center`}>
                       <div className={`w-2 h-2 ${color.text} rounded-full`}></div>
                     </div>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-xs font-semibold text-gray-500 bg-white px-2 py-1 rounded-full shadow-sm -mt-10">
-                        Step {index + 1}
-                      </div>
-                    </div>
+                    <span className="absolute -top-8 left-1/2 -translate-x-1/2 text-xs font-medium text-gray-500 bg-white shadow px-2 py-0.5 rounded-full">
+                      Step {index + 1}
+                    </span>
                   </div>
-
-                  {/* Spacer for mobile */}
-                  <div className="lg:hidden w-full"></div>
                 </motion.div>
               );
             })}
           </div>
         </div>
-
-        {/* Features Highlight */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
-          viewport={{ once: true }}
-          className="mt-20 grid md:grid-cols-3 gap-8"
-        >
-          <div className="text-center p-6 bg-blue-50 rounded-2xl">
-            <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-              <RiCheckboxCircleLine className="text-blue-600 text-xl" />
-            </div>
-            <h4 className="font-semibold text-gray-900 mb-2">Complete Audit Trail</h4>
-            <p className="text-gray-600 text-sm">Every action is logged with timestamps and user details for full transparency.</p>
-          </div>
-          
-          <div className="text-center p-6 bg-green-50 rounded-2xl">
-            <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-              <RiSendPlaneLine className="text-green-600 text-xl" />
-            </div>
-            <h4 className="font-semibold text-gray-900 mb-2">Automated Notifications</h4>
-            <p className="text-gray-600 text-sm">Real-time alerts via email, SMS, and in-app notifications for all stakeholders.</p>
-          </div>
-          
-          <div className="text-center p-6 bg-purple-50 rounded-2xl">
-            <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-              <RiQrCodeLine className="text-purple-600 text-xl" />
-            </div>
-            <h4 className="font-semibold text-gray-900 mb-2">QR Code Verification</h4>
-            <p className="text-gray-600 text-sm">Secure campus exit process with scannable QR codes and real-time validation.</p>
-          </div>
-        </motion.div>
-
-        {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.7 }}
-          viewport={{ once: true }}
-          className="text-center mt-16"
-        >
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-12 border border-blue-100">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Ready to streamline your leave process?</h3>
-            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-              Experience the complete, transparent workflow that reduces processing time and improves accountability.
-            </p>
-            <button className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
-              See Workflow in Action
-            </button>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

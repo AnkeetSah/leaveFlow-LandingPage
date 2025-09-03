@@ -19,7 +19,8 @@ const Header = () => {
     { name: "Features", href: "#features" },
     { name: "Demo", href: "#demo" },
     { name: "Technology", href: "#technology" },
-    { name: "Contact", href: "#contact" },
+   
+    { name: "WorkFlow", href: "#workflow" },
   ];
 
   return (
@@ -122,34 +123,34 @@ const Header = () => {
         </motion.button>
       </div>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Navigation - FIXED VERSION */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            className="md:hidden fixed inset-0 top-18 bg-white/98 backdrop-blur-xl"
+            className="md:hidden fixed inset-0 top-[72px] bg-white z-40 shadow-lg"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
           >
-            <div className="container mx-auto px-4 py-6 flex flex-col space-y-1">
-              {navItems.map((item) => (
+            <div className="container mx-auto px-4 py-6 flex flex-col space-y-1 bg-white">
+              {navItems.map((item, index) => (
                 <motion.a
                   key={item.name}
                   href={item.href}
-                  className="text-gray-800 font-medium text-lg py-4 px-4 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 transition-colors duration-300"
+                  className="text-gray-800 font-medium text-lg py-4 px-4 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 transition-colors duration-300 bg-white relative z-10"
                   onClick={() => setMobileMenuOpen(false)}
                   whileTap={{ scale: 0.95 }}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.2 }}
+                  transition={{ duration: 0.2, delay: index * 0.1 }}
                 >
                   {item.name}
                 </motion.a>
               ))}
               
               <motion.button
-                className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-4 rounded-xl font-medium shadow-lg mt-4 flex items-center justify-center"
+                className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-4 rounded-xl font-medium shadow-lg mt-4 flex items-center justify-center relative z-10"
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}

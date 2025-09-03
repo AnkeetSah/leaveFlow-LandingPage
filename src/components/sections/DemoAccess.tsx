@@ -98,7 +98,8 @@ const DemoAccess = () => {
 
   return (
     <section id="demo" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-      <div className="container mx-auto px-4 md:px-8 max-w-6xl">
+     <div className="mx-auto max-w-7xl relative z-10 px-4 sm:px-6 lg:px-8">
+
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
