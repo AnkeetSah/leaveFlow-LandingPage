@@ -11,14 +11,14 @@ import WorkFlowSection from "../sections/WorkFlowSection";
 const Layout = () => {
   return (
     <div>
-       <Header /> 
-  <HeroSection /> 
-     <ExecutiveSummary />
-      <RoleDashboards />
-      <WorkFlowSection />
-      <DemoAccess />
-      <TechnologyStack />
-      <Footer /> 
+          <Header />   
+  <HeroSection />  
+       <ExecutiveSummary /> 
+       <RoleDashboards />
+ <WorkFlowSection /> 
+    <DemoAccess />  
+       <TechnologyStack />
+      <Footer />   
     </div>
   );
 };

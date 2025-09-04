@@ -12,7 +12,7 @@ const ExecutiveSummary = () => {
   return (
     <section
       id="features"
-      className="relative py-24 bg-gradient-to-b from-white via-gray-50 to-white"
+     className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 pt-22 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden relative"
     >
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
         {/* Section Header */}

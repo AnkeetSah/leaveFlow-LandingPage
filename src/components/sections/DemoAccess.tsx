@@ -97,7 +97,7 @@ const DemoAccess = () => {
   const currentCredential = demoCredentials[selectedRole as keyof typeof demoCredentials];
 
   return (
-    <section id="demo" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+    <section id="demo"className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 pt-22 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden relative">
      <div className="mx-auto max-w-7xl relative z-10 px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}
