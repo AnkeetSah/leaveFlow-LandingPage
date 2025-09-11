@@ -315,7 +315,7 @@ const TechnologyStack = () => {
           </h3>
           <div className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex justify-center items-center md:p-10 p-2 mb-6">
            <div className="w-full p-4  bg-white rounded-2xl">
-             <img className="w-full rounded-xl" src="../../../public/assets/system.svg" alt=""/>
+             <img className="w-full rounded-xl" src="/assets/system.svg" alt=""/>
            </div>
           </div>
        
