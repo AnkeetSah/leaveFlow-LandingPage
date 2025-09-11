@@ -314,8 +314,8 @@ const TechnologyStack = () => {
             System Architecture Overview
           </h3>
           <div className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex justify-center items-center md:p-10 p-2 mb-6">
-           <div className="w-full p-2 bg-white rounded-2xl">
-             <img className="w-full rounded-xl" src="../../../public/assets/Leave-Flow-Architecture.drawio.svg" alt=""/>
+           <div className="w-full p-4  bg-white rounded-2xl">
+             <img className="w-full rounded-xl" src="../../../public/assets/system.svg" alt=""/>
            </div>
           </div>
        
