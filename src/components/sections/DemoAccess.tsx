@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { RiUserLine, RiUserStarLine, RiUserSettingsLine, RiUserHeartLine, RiAdminLine, RiShieldKeyholeLine, RiLoginBoxLine, RiMailSendLine, RiFileCopyLine, RiCheckLine, RiExternalLinkLine } from "react-icons/ri";
+import { RiUserLine, RiUserStarLine, RiUserSettingsLine, RiUserHeartLine,  RiShieldKeyholeLine, RiLoginBoxLine, RiMailSendLine, RiFileCopyLine, RiCheckLine, RiExternalLinkLine } from "react-icons/ri";
 
 const DemoAccess = () => {
   const [selectedRole, setSelectedRole] = useState("student");
