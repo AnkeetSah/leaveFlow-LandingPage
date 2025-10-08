@@ -6,12 +6,12 @@ const DemoAccess = () => {
   const [selectedRole, setSelectedRole] = useState("student");
   const [copiedItem, setCopiedItem] = useState<string | null>(null);
   const [showCustomForm, setShowCustomForm] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     role: "student",
-    institution: "",
-    purpose: ""
+    gender: ""
   });
 
   const demoCredentials = {
@@ -47,14 +47,6 @@ const DemoAccess = () => {
       access: "Hostel management",
       color: "orange"
     },
-    admin: {
-      icon: <RiAdminLine className="text-xl" />,
-      role: "⚙️ Admin",
-      email: "admin.demo@leaveflow.com",
-      password: "demo2024",
-      access: "Full system access",
-      color: "indigo"
-    }
   };
 
   const getColorClasses = (color: string) => {
@@ -86,19 +78,48 @@ const DemoAccess = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Thank you! We'll contact you with custom demo access within 24 hours.");
-    setShowCustomForm(false);
-    setFormData({ name: "", email: "", role: "student", institution: "", purpose: "" });
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("https://leaveflow-app-backend.onrender.com/api/add-user/auto", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          gender: formData.gender,
+          role: formData.role
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log("API Response:", result);
+      
+      alert("Thank you! Your Account Creation has been initiated.");
+      setShowCustomForm(false);
+      setFormData({ name: "", email: "", role: "student", gender: "" });
+      
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("There was an error submitting your request. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const currentCredential = demoCredentials[selectedRole as keyof typeof demoCredentials];
 
   return (
-    <section id="demo"className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 pt-22 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden relative">
-     <div className="mx-auto max-w-7xl relative z-10 px-4 sm:px-6 lg:px-8">
+    <section id="demo" className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 pt-22 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden relative">
+      <div className="mx-auto max-w-7xl relative z-10 px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}
         <motion.div
@@ -120,20 +141,21 @@ const DemoAccess = () => {
           <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
             Test drive the complete LeaveFlow system using the demo credentials below. Copy and paste them on the login page.
           </p>
+          <h3 className="text-2xl font-bold text-gray-900 mt-6">🚀 Demo Access Instructions</h3>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid gap-12 items-start">
           {/* Demo Access Card */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
             viewport={{ once: true }}
-            className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100"
+            className="bg-white grid md:grid-cols-2 gap-12 rounded-2xl p-8 shadow-lg border border-gray-100"
           >
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">🚀 Demo Access Instructions</h3>
-            
-            {/* Step-by-step Guide */}
+           
+           <div className="">
+             {/* Step-by-step Guide */}
             <div className="mb-8 bg-blue-50 rounded-xl p-6 border border-blue-200">
               <h4 className="font-semibold text-blue-900 mb-4">How to access the demo:</h4>
               <ol className="space-y-3 text-sm text-blue-800">
@@ -183,8 +205,10 @@ const DemoAccess = () => {
                 })}
               </div>
             </div>
+           </div>
 
-            {/* Credentials Display */}
+           <div className="">
+             {/* Credentials Display */}
             <div className="mb-6">
               <div className="flex items-center justify-between mb-4">
                 <h4 className="font-semibold text-gray-900">Credentials for {currentCredential.role}</h4>
@@ -235,7 +259,7 @@ const DemoAccess = () => {
 
             {/* Login Page Button */}
             <motion.a
-              href="/login" // Your actual login page URL
+              href="https://leaveflow.netlify.app/"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 px-6 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center mb-4"
@@ -253,9 +277,10 @@ const DemoAccess = () => {
                 ✓ {copiedItem === 'all' ? 'Credentials copied!' : copiedItem === 'email' ? 'Email copied!' : 'Password copied!'}
               </motion.div>
             )}
+           </div>
           </motion.div>
 
-          {/* Custom Access Form - Remains the same as before */}
+          {/* Custom Access Form */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -263,7 +288,6 @@ const DemoAccess = () => {
             viewport={{ once: true }}
             className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100"
           >
-            {/* ... (Keep the custom access form exactly as before) ... */}
             <div className="flex items-center mb-6">
               <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-4">
                 <RiMailSendLine className="text-blue-600 text-xl" />
@@ -333,16 +357,19 @@ const DemoAccess = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Institution/Organization *</label>
-                  <input
-                    type="text"
-                    name="institution"
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Gender *</label>
+                  <select
+                    name="gender"
                     required
-                    value={formData.institution}
+                    value={formData.gender}
                     onChange={handleInputChange}
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Your institution name"
-                  />
+                  >
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                  </select>
                 </div>
 
                 <div>
@@ -357,21 +384,8 @@ const DemoAccess = () => {
                     <option value="faculty">Faculty</option>
                     <option value="hod">HOD/Department Head</option>
                     <option value="warden">Warden</option>
-                    <option value="admin">Administrator</option>
-                    <option value="multiple">Multiple Roles</option>
+                    <option value="guard">Guard</option>
                   </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Purpose of Evaluation</label>
-                  <textarea
-                    name="purpose"
-                    value={formData.purpose}
-                    onChange={handleInputChange}
-                    rows={3}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Tell us about your evaluation needs..."
-                  />
                 </div>
 
                 <div className="flex gap-3 pt-2">
@@ -384,9 +398,10 @@ const DemoAccess = () => {
                   </button>
                   <button
                     type="submit"
-                    className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-2 px-4 rounded-lg font-medium shadow-lg hover:shadow-xl transition-all"
+                    disabled={isSubmitting}
+                    className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-2 px-4 rounded-lg font-medium shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Submit Request
+                    {isSubmitting ? "Submitting..." : "Submit Request"}
                   </button>
                 </div>
               </form>
@@ -394,7 +409,7 @@ const DemoAccess = () => {
           </motion.div>
         </div>
 
-        {/* Security Assurance - Remains the same */}
+        {/* Security Assurance */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
