@@ -32,7 +32,7 @@ const HeroSection = memo(() => {
 
   return (
     <div
-      className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 pt-22 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden relative"
+      className="min-h-screen bg-gradient-to-br from-blue-100 to-blue-200 pt-22 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden relative"
       aria-labelledby="hero-heading"
     >
       {/* Subtle Background Gradient */}

@@ -172,7 +172,7 @@ const TechnologyStack = () => {
   return (
     <section
       id="technology"
-      className="py-24 bg-gradient-to-br from-gray-50 to-indigo-50"
+      className="py-24 bg-gradient-to-br from-blue-100 to-blue-200"
     >
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
         {/* Section Header */}

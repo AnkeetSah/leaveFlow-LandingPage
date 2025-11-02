@@ -278,7 +278,7 @@ const RoleDashboards = () => {
   const color = getColorClasses(currentRole.color);
 
   return (
-    <section id="roles" className="py-16 md:py-24 bg-gradient-to-br from-gray-50 via-white to-blue-50 overflow-hidden">
+    <section id="roles" className="py-16 md:py-24 bg-gradient-to-br from-blue-100 to-blue-200 overflow-hidden">
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
         {/* Section Header */}
         <motion.div
