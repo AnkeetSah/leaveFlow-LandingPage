@@ -158,13 +158,15 @@ const Header = () => {
                 </motion.a>
               ))}
 
-              <motion.button
+              <motion.a
                 className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-4 rounded-xl font-semibold shadow-md mt-4 flex items-center justify-center hover:shadow-indigo-400/40 transition-all"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="#requestdemo"
+                onClick={() => setMobileMenuOpen(false)}
               >
                 Request Demo <RiArrowRightUpLine className="ml-1" />
-              </motion.button>
+              </motion.a>
             </div>
           </motion.div>
         )}

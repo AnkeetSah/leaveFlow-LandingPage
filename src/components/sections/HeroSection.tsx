@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { RiLeafLine, RiShieldCheckLine, RiBarChartBoxLine, RiTimeLine, RiUserSettingsLine, RiDashboardLine, RiCheckboxCircleFill } from "react-icons/ri";
-import { SiMongodb, SiExpress, SiReact, SiNodedotjs, SiTailwindcss, SiJavascript } from "react-icons/si";
+import { SiMongodb, SiExpress, SiReact, SiNodedotjs, SiTailwindcss } from "react-icons/si";
 import { memo } from "react";
 
 // Memoize the component to prevent unnecessary re-renders
@@ -101,7 +101,7 @@ const HeroSection = memo(() => {
               transition={{ duration: 0.5, delay: 0.8 }}
               className="flex flex-col sm:flex-row gap-4 mb-10"
             >
-              <motion.a
+              {/* <motion.a
                 href="#demo"
                 className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-full font-semibold text-base shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center"
                 whileHover={{ scale: 1.05 }}
@@ -118,7 +118,7 @@ const HeroSection = memo(() => {
                 aria-label="Explore LeaveFlow Code"
               >
                 <SiJavascript className="mr-2 text-yellow-500" /> Explore Code
-              </motion.a>
+              </motion.a> */}
             </motion.div>
 
             {/* Feature Highlights */}
