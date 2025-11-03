@@ -6,232 +6,287 @@ import {
   RiShieldKeyholeLine,
   RiRobotLine,
   RiNotification3Line,
+  RiArrowRightLine,
+  RiCheckboxCircleLine,
+  RiBarChartBoxLine,
 } from "react-icons/ri";
 
 const ExecutiveSummary = () => {
   const featureCards = [
     {
-      icon: <RiShieldKeyholeLine className="text-green-600 text-xl md:text-2xl" />,
-      bg: "bg-green-100",
+      icon: <RiShieldKeyholeLine className="text-white text-xl" />,
       title: "Digital-First Workflow",
       description: "Automated routing with intelligent notifications",
-      border: "border-green-400",
-      glow: "shadow-green-300/50",
+      gradient: "from-green-500 to-emerald-600",
     },
     {
-      icon: <RiTentLine className="text-purple-600 text-xl md:text-2xl" />,
-      bg: "bg-purple-100",
+      icon: <RiTentLine className="text-white text-xl" />,
       title: "Role-Specific Dashboards",
       description: "Interfaces tailored for students, faculty, and admins",
-      border: "border-purple-400",
-      glow: "shadow-purple-300/50",
+      gradient: "from-purple-500 to-indigo-600",
     },
     {
-      icon: <RiLightbulbFlashLine className="text-orange-600 text-xl md:text-2xl" />,
-      bg: "bg-orange-100",
+      icon: <RiLightbulbFlashLine className="text-white text-xl" />,
       title: "Real-Time Transparency",
       description: "Clear visibility of status across workflow stages",
-      border: "border-orange-400",
-      glow: "shadow-orange-300/50",
+      gradient: "from-orange-500 to-amber-600",
     },
     {
-      icon: <RiRobotLine className="text-blue-600 text-xl md:text-2xl" />,
-      bg: "bg-blue-100",
+      icon: <RiRobotLine className="text-white text-xl" />,
       title: "AI Form Assistant",
       description: "Faster, error-free leave applications with AI",
-      border: "border-blue-400",
-      glow: "shadow-blue-300/50",
+      gradient: "from-blue-500 to-cyan-600",
     },
     {
-      icon: <RiNotification3Line className="text-indigo-600 text-xl md:text-2xl" />,
-      bg: "bg-indigo-100",
+      icon: <RiNotification3Line className="text-white text-xl" />,
       title: "Built-In Notifications",
       description: "Custom alerts without third-party tools",
-      border: "border-indigo-400",
-      glow: "shadow-indigo-300/50",
+      gradient: "from-indigo-500 to-violet-600",
     },
     {
-      icon: <RiShieldKeyholeLine className="text-red-600 text-xl md:text-2xl" />,
-      bg: "bg-red-100",
+      icon: <RiShieldKeyholeLine className="text-white text-xl" />,
       title: "Enterprise Security",
       description: "OTP login + audit-ready security logs",
-      border: "border-red-400",
-      glow: "shadow-red-300/50",
-    },
-    {
-      icon: <RiSearchEyeLine className="text-teal-600 text-xl md:text-2xl" />,
-      bg: "bg-teal-100",
-      title: "Scalable Architecture",
-      description: "Flexible deployment for institutions of any size",
-      border: "border-teal-400",
-      glow: "shadow-teal-300/50",
+      gradient: "from-red-500 to-rose-600",
     },
   ];
 
   const stats = [
-    { number: "80%", label: "Faster Processing" },
-    { number: "100%", label: "Paperless Workflow" },
-    { number: "24/7", label: "Accessibility" },
-    { number: "99.9%", label: "Uptime Guarantee" },
+    { number: "80%", label: "Faster Processing", trend: "+25%" },
+    { number: "100%", label: "Paperless Workflow", trend: "Eco-Friendly" },
+    { number: "24/7", label: "Accessibility", trend: "Always On" },
+    { number: "99.9%", label: "Uptime Guarantee", trend: "Reliable" },
   ];
 
+  const problems = [
+    "Manual paperwork causing delays and lost applications",
+    "No transparency in approval progress",
+    "High admin workload due to manual tracking",
+    "No audit trail for compliance and accountability",
+    "Poor user experience for applicants and approvers",
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
-    <section
-      id="features"
-      className="min-h-screen bg-gradient-to-br from-blue-100 to-blue-200 pt-16 md:pt-24 pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden relative"
-    >
-      <div className="container mx-auto px-4 md:px-8 max-w-7xl">
-        {/* Section Header */}
+    <section className="min-h-screen bg-slate-50 py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      {/* Header Section */}
+      <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          viewport={{ once: true, margin: "-50px" }}
-          className="text-center mb-16 md:mb-20"
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-20"
         >
-          <div className="inline-flex items-center justify-center w-14 h-14 bg-blue-100 rounded-2xl shadow-md mb-5">
-            <RiTentLine className="text-blue-600 text-2xl" />
+          <motion.div
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="w-20 h-20 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-xl"
+          >
+            <RiBarChartBoxLine className="text-white text-3xl" />
+          </motion.div>
+          
+          <div className="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+            Enterprise Leave Management
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-5 md:mb-6 leading-tight">
-            Revolutionizing Leave Management for{" "}
-            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-              Modern Institutions
+          
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+            Modernize Your
+            <span className="block bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+              Leave Workflow
             </span>
-          </h2>
-          <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            LeaveFlow replaces outdated paper-based processes with a sleek,
-            enterprise-grade digital system powered by the MERN stack and
-            intelligent workflow automation.
+          </h1>
+          
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Transform outdated paper processes into a seamless digital experience 
+            with intelligent automation and real-time visibility.
           </p>
         </motion.div>
 
-        {/* Challenge & Innovation */}
-        <div className="flex flex-col gap-8 md:gap-12 items-start">
-          {/* The Challenge */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-            viewport={{ once: true, margin: "-50px" }}
-            className="bg-white rounded-2xl p-6 md:p-8 lg:p-10 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 w-full"
-          >
-            <div className="flex items-center mb-6 md:mb-8">
-              <div className="w-12 h-12 md:w-14 md:h-14 bg-red-100 rounded-xl flex items-center justify-center mr-4 shadow-sm">
-                <RiSearchEyeLine className="text-red-600 text-xl md:text-2xl" />
+        {/* Stats Grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20"
+        >
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              variants={cardVariants}
+              whileHover={{ y: -5, transition: { type: "spring", stiffness: 300 } }}
+              className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 group hover:shadow-xl transition-all duration-300"
+            >
+              <div className="flex items-center justify-between mb-4">
+                <div className="text-3xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                  {stat.number}
+                </div>
+                <div className="text-xs font-semibold bg-green-100 text-green-800 px-2 py-1 rounded-full">
+                  {stat.trend}
+                </div>
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-gray-900">
-                The Challenge We Solve
-              </h3>
-            </div>
-            <p className="text-gray-600 mb-6 md:mb-8 text-base md:text-lg leading-relaxed">
-              Traditional leave management is plagued with inefficiencies that
-              drain institutional productivity:
-            </p>
-            <ul className="space-y-4">
-              {[
-                "Manual paperwork causing delays and lost applications",
-                "No transparency in approval progress",
-                "High admin workload due to manual tracking",
-                "No audit trail for compliance and accountability",
-                "Poor user experience for applicants and approvers",
-              ].map((item, index) => (
-                <motion.li
-                  key={index}
-                  initial={{ opacity: 0, x: -15 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.4, delay: 0.05 * index, ease: "easeOut" }}
-                  viewport={{ once: true, margin: "-20px" }}
-                  className="flex items-start"
-                >
-                  <div className="w-5 h-5 md:w-6 md:h-6 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0 mr-3 mt-1">
-                    <div className="w-2 h-2 md:w-2.5 md:h-2.5 bg-red-600 rounded-full"></div>
-                  </div>
-                  <span className="text-gray-700 text-sm md:text-base">{item}</span>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
+              <div className="text-gray-600 font-medium">{stat.label}</div>
+              <div className="w-0 group-hover:w-full h-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full transition-all duration-500 mt-2"></div>
+            </motion.div>
+          ))}
+        </motion.div>
 
-          {/* Our Innovation */}
+        {/* Main Content Grid */}
+        <div className="grid lg:grid-cols-2 gap-12 mb-20">
+          {/* Problems Section */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-            viewport={{ once: true, margin: "-50px" }}
-            className="w-full"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="space-y-8"
           >
-            <div className="flex items-center mb-6 md:mb-8">
-              <div className="w-12 h-12 md:w-14 md:h-14 bg-blue-100 rounded-xl flex items-center justify-center mr-4 shadow-sm">
-                <RiLightbulbFlashLine className="text-blue-600 text-xl md:text-2xl" />
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center">
+                <RiSearchEyeLine className="text-red-600 text-2xl" />
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-gray-900">Our Innovation</h3>
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900">Current Challenges</h2>
+                <p className="text-gray-600">Inefficiencies plaguing traditional systems</p>
+              </div>
             </div>
 
-            <p className="text-gray-600 mb-6 md:mb-8 text-base md:text-lg leading-relaxed">
-              LeaveFlow delivers a modern digital solution that transforms leave
-              management into a seamless experience:
-            </p>
-
-            {/* Feature Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-              {featureCards.map((item, index) => (
+            <div className="space-y-4">
+              {problems.map((problem, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 15, scale: 0.95 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  whileHover={{
-                    scale: 1.05,
-                    rotate: 1,
-                    transition: { type: "spring", stiffness: 300 },
-                  }}
-                  viewport={{ once: true, margin: "-20px" }}
-                  className={`relative bg-white rounded-xl p-5 md:p-6 shadow-md border ${item.border} hover:shadow-2xl transition-all duration-500 flex flex-col items-center text-center overflow-hidden`}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="flex items-center space-x-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group"
                 >
-                  {/* Glowing border effect */}
-                  <motion.div
-                    whileHover={{
-                      boxShadow: `0 0 20px 5px rgba(59, 130, 246, 0.4)`,
-                      transition: { duration: 0.4, yoyo: Infinity },
-                    }}
-                    className={`absolute inset-0 rounded-xl pointer-events-none`}
-                  />
-                  <motion.div
-                    whileHover={{ rotate: [0, 5, -5, 0], transition: { repeat: Infinity, duration: 2 } }}
-                    className={`w-14 h-14 md:w-16 md:h-16 ${item.bg} rounded-xl flex items-center justify-center mb-4 shadow-inner`}
-                  >
-                    {item.icon}
-                  </motion.div>
-                  <h4 className="font-semibold text-gray-900 text-base md:text-lg mb-2">{item.title}</h4>
-                  <p className="text-gray-600 text-sm md:text-base leading-relaxed">{item.description}</p>
+                  <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-red-500 transition-colors">
+                    <div className="w-2 h-2 bg-red-600 rounded-full group-hover:bg-white transition-colors"></div>
+                  </div>
+                  <span className="text-gray-700 font-medium">{problem}</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Solutions Section */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="space-y-8"
+          >
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                <RiLightbulbFlashLine className="text-blue-600 text-2xl" />
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900">Our Solution</h2>
+                <p className="text-gray-600">LeaveFlow's innovative approach</p>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-4">
+              {featureCards.map((feature, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  whileHover={{ 
+                    scale: 1.02,
+                    transition: { type: "spring", stiffness: 300 }
+                  }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className={`bg-gradient-to-br ${feature.gradient} rounded-xl p-5 text-white shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer`}
+                >
+                  <div className="flex items-start space-x-3">
+                    <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-white/30 transition-colors">
+                      {feature.icon}
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-lg mb-1">{feature.title}</h3>
+                      <p className="text-white/90 text-sm leading-relaxed">{feature.description}</p>
+                    </div>
+                    <RiArrowRightLine className="text-white/60 group-hover:text-white transition-colors flex-shrink-0 mt-1" />
+                  </div>
                 </motion.div>
               ))}
             </div>
           </motion.div>
         </div>
 
-        {/* Stats Banner */}
+        {/* CTA Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
-          viewport={{ once: true, margin: "-50px" }}
-          className="mt-16 md:mt-20 lg:mt-24 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-6 md:p-10 lg:p-14 text-white shadow-2xl"
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center"
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 text-center">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.1 * index, ease: "easeOut" }}
-                viewport={{ once: true, margin: "-20px" }}
+          <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl p-12 text-white shadow-2xl">
+            <h3 className="text-3xl font-bold mb-4">Ready to Transform Your Institution?</h3>
+            <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
+              Join hundreds of institutions that have modernized their leave management with LeaveFlow.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2"
               >
-                <div className="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-1 md:mb-2">
-                  {stat.number}
+                <span>Start Free Trial</span>
+                <RiArrowRightLine className="text-xl" />
+              </motion.button>
+              
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-blue-600 transition-all duration-300"
+              >
+                Schedule Demo
+              </motion.button>
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-6 mt-8 pt-8 border-t border-blue-500">
+              {[
+                "No credit card required",
+                "14-day free trial",
+                "Full support included",
+                "Cancel anytime"
+              ].map((item, index) => (
+                <div key={index} className="flex items-center space-x-2 text-blue-200">
+                  <RiCheckboxCircleLine className="text-lg" />
+                  <span className="text-sm">{item}</span>
                 </div>
-                <div className="text-blue-100 text-xs md:text-sm tracking-wide">{stat.label}</div>
-              </motion.div>
-            ))}
+              ))}
+            </div>
           </div>
         </motion.div>
       </div>
