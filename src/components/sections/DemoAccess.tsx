@@ -390,11 +390,13 @@ const DemoAccess = () => {
 
           {/* Custom Access Form */}
           <motion.div
+          id="requestdemo"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
             viewport={{ once: true }}
             className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100"
+            
           >
             <div className="flex items-center mb-6">
               <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-4">

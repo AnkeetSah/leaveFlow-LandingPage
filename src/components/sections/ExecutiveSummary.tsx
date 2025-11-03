@@ -67,7 +67,7 @@ const ExecutiveSummary = () => {
   ];
 
   return (
-    <section className="min-h-screen bg-slate-50 py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section id="features" className="min-h-screen bg-slate-50 py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Header Section */}
       <div className="max-w-7xl mx-auto">
         <motion.div

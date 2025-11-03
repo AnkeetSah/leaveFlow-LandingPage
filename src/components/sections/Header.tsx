@@ -99,14 +99,16 @@ const Header = () => {
             </motion.div>
           ))}
 
-          <motion.button
+          <motion.a
+            href="#requestdemo"
             className="ml-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-5 py-2.5 rounded-xl font-semibold shadow-md flex items-center space-x-1 hover:shadow-indigo-500/40 transition-all"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            role="button"
           >
-            <span>Request Demo</span>
+            Request Demo
             <RiArrowRightUpLine className="text-lg" />
-          </motion.button>
+          </motion.a>
         </nav>
 
         {/* Mobile Menu Button */}
