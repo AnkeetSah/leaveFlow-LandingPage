@@ -66,28 +66,6 @@ const ExecutiveSummary = () => {
     "Poor user experience for applicants and approvers",
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  };
-
   return (
     <section className="min-h-screen bg-slate-50 py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Header Section */}
@@ -125,18 +103,15 @@ const ExecutiveSummary = () => {
           </p>
         </motion.div>
 
-        {/* Stats Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20"
-        >
+        {/* Stats Grid - Without variants */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
-              variants={cardVariants}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
               whileHover={{ y: -5, transition: { type: "spring", stiffness: 300 } }}
               className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 group hover:shadow-xl transition-all duration-300"
             >
@@ -152,7 +127,7 @@ const ExecutiveSummary = () => {
               <div className="w-0 group-hover:w-full h-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full transition-all duration-500 mt-2"></div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
         {/* Main Content Grid */}
         <div className="grid lg:grid-cols-2 gap-12 mb-20">
